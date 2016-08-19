@@ -11,7 +11,7 @@ Created this project in order to investigate Fetching strategies, how do Hiberna
 I faced problem the same as OP in this question:
  http://stackoverflow.com/questions/38874609/how-to-define-friendship-relationship-using-hibernate
 
-Seems it bug agains hibernate, since references' dependencies are not trivial, and I would say _Badly Designed_, vialete sane DB normalization rules, I cannot say which one.   
+References' dependencies are not trivial, and I would say _Badly Designed_, vialete sane DB normalization rules, I cannot say which one.  Anyway it sounds like a bug against hibernate.  
 
 > All JPA providers should be able to cope with eager loading of cyclic relations. Any problem should mean you raise a  bug against the JPA provider.
 
