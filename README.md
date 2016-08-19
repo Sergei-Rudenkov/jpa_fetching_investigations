@@ -15,6 +15,7 @@ Seems it bug agains hibernate, since references' dependencies are not trivial, a
 
 > All JPA providers should be able to cope with eager loading of cyclic relations. Any problem should mean you raise a  bug against the JPA provider.
 
+### Reproduce the bug:
 So I fixed the problem by adding _LAZY_. Initialization to make problem came up again switch it back to _EAGER_:
 
 ```java
@@ -24,4 +25,13 @@ public class Member implements Serializable {
     private Set<Friendship> friendRequests = new HashSet<Friendship>();
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "friend")
     private Set<Friendship> friends = new HashSet<Friendship>();
+```
+
+Add then several rows to each table:
+
+```sql
+INSERT INTO member values(1, 'Aliaksei', 'Losyca', 'dvorik')
+INSERT INTO member values(2, 'Siarzuk', 'Malinauka', 'kurik')
+
+INSERT INTO friendship values(true, null, 'dvorik', 'kurik')
 ```
